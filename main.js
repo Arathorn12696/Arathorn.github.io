@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         console.error('Sign Out Error:', error);
                     });
                 });
-                
+
             } else {
                 console.error('User info elements not found.');
             }
@@ -101,7 +101,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-
+    const copyAddressBtn = document.getElementById('copy-address-btn');
+    copyAddressBtn.style.display = 'none';
+    if (copyAddressBtn) {
+        copyAddressBtn.addEventListener('click', () => {
+            const addressText = document.getElementById('address').textContent;
+            navigator.clipboard.writeText(addressText)
+                .then(() => {
+                    alert('Address copied to clipboard');
+                })
+                .catch((error) => {
+                    console.error('Copy failed', error);
+                });
+        });
+    }
 
 
 
@@ -123,6 +136,8 @@ function successCallback(position) {
     const lng = position.coords.longitude;
     document.getElementById('address').textContent = `Latitude: ${lat}, Longitude: ${lng}`;
     initMap(lat, lng);
+    //show the copy button
+    document.getElementById('copy-address-btn').style.display = 'inline-block';
 }
 
 function errorCallback(error) {
