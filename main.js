@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, FacebookAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, FacebookAuthProvider, signOut, initializeApp } from "https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyDzK5vAPCGBe-eAyC-DDJrdSm1aMMVZh70",
@@ -7,8 +7,10 @@ const firebaseConfig = {
     projectId: "content-28013",
     storageBucket: "content-28013.appspot.com",
     messagingSenderId: "519137190518",
-    appId: "1:519137190518:web:e8a8e4db798146b4f23557"
+    appId: "1:519137190518:web:e8a8e4db798146b4f23557",
+    authDomain: 'https://arathorn12696.github.io/'
 };
+
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
