@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="main.js" defer type="module"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
@@ -9,20 +8,20 @@
 </head>
 
 <body>
-    <div class="login-container">
+    <div class="container">
     <h1>Login</h1>
     <button id="google-login-btn" class="google-button">
         <img src="images/google-plus.png" alt="Google Logo" class="google-logo">
         Sign in with Google
         <!-- <i class="fab fa-google"></i>  -->
     </button>
-
-    <h1>Geolocation</h1>
-
-    <button id="getLocation">Get Location</button>
-    <div id="map" style="height: 400px; width: 100%;"></div>
-    <p id="address"></p>
-    <script src="location.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDv356gW92xpoEQItB3O1rYVZtvmwL51nQ"></script>
+    <br>
+    <button id="facebook-login-btn" class="facebook-button">
+        <img src="images/facebook.png" alt="Facebook Logo" class="facebook-logo">
+        Sign in with Facebook
+        <!-- <i class="fab fa-google"></i>  -->
+    </button>
+    </div>
+    <script src="main.js" defer type="module"></script>
 </body>
 </html>

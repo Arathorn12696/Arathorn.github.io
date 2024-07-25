@@ -1,15 +1,17 @@
 document.getElementById('getLocation').addEventListener('click', function() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback, { enableHighAccuracy: true });
     } else {
         alert("Geolocation is not supported by this browser.");
     }
+    
 });
 
 function successCallback(position) {
     const lat = position.coords.latitude;
     const lng = position.coords.longitude;
     document.getElementById('address').textContent = `Latitude: ${lat}, Longitude: ${lng}`;
+    console.log(`Latitude: ${lat}, Longitude: ${lng}`); // Print to console
     initMap(lat, lng);
 }
 
@@ -54,3 +56,21 @@ function initMap(lat, lng) {
         }
     });
 }
+
+function useGoogleGeolocationAPI() {
+    fetch('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDv356gW92xpoEQItB3O1rYVZtvmwL51nQ', {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+        const lat = data.location.lat;
+        const lng = data.location.lng;
+        document.getElementById('address').textContent = `Latitude: ${lat}, Longitude: ${lng}`;
+        console.log(`Latitude: ${lat}, Longitude: ${lng}`); // Print to console
+        initMap(lat, lng);
+    })
+    .catch(error => {
+        console.error('Error using Google Geolocation API:', error);
+    });
+}
+
