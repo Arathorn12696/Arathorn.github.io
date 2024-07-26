@@ -10,18 +10,32 @@
 <body>
     <div class="container">
     <h1>Login</h1>
+    <div id="email-password-login">
+        <input type="email" id="login-email" placeholder="Email" required><br>
+        <input type="password" id="login-password" placeholder="Password" required><br>
+    </div>
+    <button id="email-login-btn">Login</button><br>
+    <h1>Sign Up</h1>
+    <div id="email-password-signup">
+        <input type="text" id="signup-username" placeholder="Username" required><br>
+        <input type="email" id="signup-email" placeholder="Email" required><br>
+        <input type="password" id="signup-password" placeholder="Password" required><br>
+    </div>
+    <button id="email-signup-btn" class="sign-up-button">Sign up </button>
+    <br>
+    <hr style="width:90%;text-align:center;">
+    <p> Or </p>
     <button id="google-login-btn" class="google-button">
         <img src="images/google-plus.png" alt="Google Logo" class="google-logo">
         Sign in with Google
-        <!-- <i class="fab fa-google"></i>  -->
     </button>
     <br>
     <button id="facebook-login-btn" class="facebook-button">
         <img src="images/facebook.png" alt="Facebook Logo" class="facebook-logo">
         Sign in with Facebook
-        <!-- <i class="fab fa-google"></i>  -->
     </button>
     </div>
+    <br><br>
     <script src="main.js" defer type="module"></script>
 </body>
 </html>
