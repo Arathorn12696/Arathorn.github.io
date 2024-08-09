@@ -1,6 +1,3 @@
-
-gsap.registerPlugin(ScrollTrigger);
-
 const lenis = new Lenis();
 
 lenis.on("scroll", ScrollTrigger.update);
@@ -11,86 +8,87 @@ gsap.ticker.add((time) => {
 
 gsap.ticker.lagSmoothing(0);
 
-const initialClipPaths= [
-    "polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%)",
-    "polygon(33% 0%, 33% 0%, 33% 0%, 33% 0%)",
-    "polygon(66% 0%, 66% 0%, 66% 0%, 66% 0%)",
-    "polygon(0% 33%, 0% 33%, 0% 33%, 0% 33%)",
-    "polygon(33% 33%, 33% 33%, 33% 33%, 33% 33%)",
-    "polygon(66% 33%, 66% 33%, 66% 33%, 66% 33%)",
-    "polygon(0% 66%, 0% 66%, 0% 66%, 0% 66%)",
-    "polygon(33% 66%, 33% 66%, 33% 66%, 33% 66%)",
-    "polygon(66% 66%, 66% 66%, 66% 66%, 66% 66%)",
-];
+gsap.registerPlugin(ScrollTrigger);
 
-const finalClipPaths= [
-    "polygon(0% 0%, 33.5% 0%, 33.5% 33%, 0% 33.5%)",
-    "polygon(33% 0%, 66.5% 0%, 66.5% 33%, 33% 33.5%)",
-    "polygon(66% 0%, 100% 0%, 100% 33%, 66% 33.5%)",
-    "polygon(0% 33%, 33.5% 33%, 33.5% 66%, 0% 66.5%)",
-    "polygon(33% 33%, 66.5% 33%, 66.5% 66%, 33% 66.5%)",
-    "polygon(66% 33%, 100% 33%, 100% 66%, 66% 66.5%)",
-    "polygon(0% 66%, 33.5% 66%, 33.5% 100%, 0% 100%)",
-    "polygon(33% 66%, 66.5% 66%, 66.5% 100%, 33% 100%)",
-    "polygon(66% 66%, 100% 66%, 100% 100%, 66% 100%)",
-];
-
-function createMasks() {
-    const imgs = document.querySelectorAll(".img");
-    imgs.forEach((img, imgIndex)=>{
-        for (let i=0; i<=9; i++){
-            const mask = document.createElement("div");
-            mask.classList.add("mask", `m-${i}`);
-            img.appendChild(mask);
-        }
-    });
-}
-createMasks();
-
-const rows = gsap.utils.toArray(".row");
-
-rows.forEach((row) => {
-    const imgs = row.querySelectorAll(".img");
-
-    imgs.forEach((img) => {
-        const masks= img.querySelectorAll(".mask");
-
-        masks.forEach((mask, index) => {
-            gsap.set(mask, {
-                clipPath: initialClipPaths[index],
-            });
-        });
-
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: row,
-                start: "top 75%",
-            },
-        });
-
-        const animationOrder = [
-            [".m-1"],
-            [".m-2", ".m-4"],
-            [".m-3", ".m-5", ".m-7"],
-            [".m-6", ".m-8"],
-            [".m-9"],
-        ];
-
-        animationOrder.forEach((targets, index) => {
-            tl.to(
-                targets.map((cls) => img.querySelector(cls)),
-                {
-                    clipPath: (i, el) => finalClipPaths[Array.from(masks).indexOf(el)],
-                    duration: 0.5,
-                    ease: "power2.out",
-                    stagger: 0.1,
-                },
-                index * 0.125
-            );
-        });
-    });
+ScrollTrigger.create({
+    trigger: ".pinned",
+    start: "top top",
+    endTrigger: ".whitespace",
+    end: "bottom top",
+    pin: true,
+    pinSpacing: false,
 });
 
-console.log('Lenis initialized:', lenis);
-console.log('ScrollTrigger:', ScrollTrigger);
+ScrollTrigger.create({
+    trigger: ".header-info",
+    start: "top top",
+    endTrigger: ".whitespace",
+    end: "bottom top",
+    pin: true,
+    pinSpacing: false,
+});
 
+ScrollTrigger.create({
+    trigger: ".pinned",
+    start: "top top",
+    endTrigger: ".header-info",
+    end: "bottom bottom",
+    onUpdate: (self) => {
+        const rotation = self.progress * 360;
+        gsap.to(".revealer", { rotation });
+    },
+});
+
+//move and turn to square
+ScrollTrigger.create({
+    trigger: ".pinned",
+    start: "top top",
+    endTrigger: ".header-info",
+    end: "bottom bottom",
+    onUpdate: (self) => {
+        const progress = self.progress;
+        const clipPath = `polygon(
+        ${45 - 45 * progress}% ${0 + 0 * progress}%,
+        ${55 + 45 * progress}% ${0 + 0 * progress}%,
+        ${55 + 45 * progress}% ${100 - 0 * progress}%,
+        ${45 - 45 * progress}% ${100 - 0 * progress}%
+        )`;
+        gsap.to(".revealer-1, .revealer-2",{
+            clipPath: clipPath,
+            ease: "none",
+            duration: 0,
+        });
+    },
+});
+
+//move the square to the center
+ScrollTrigger.create({
+    trigger: ".header-info",
+    start: "top top",
+    end: "bottom 50%",
+    scrub :1,
+    onUpdate: (self) => {
+        const progress = self.progress;
+        const left = 35 + 15 * progress;
+        gsap.to(".revealer",{
+            left: `${left}%`,
+            ease: "none",
+            duration: 0,
+        });
+    },
+});
+
+ScrollTrigger.create({
+    trigger:".whitespace",
+    start: "top 50%",
+    end: "bottom bottom",
+    scrub: 1,
+    onUpdate: (self) => {
+        const scale = 1 + 22 * self.progress;
+        gsap.to(".revealer", {
+            scale: scale,
+            ease: "none",
+            duration: 0,
+        });
+    },
+});
