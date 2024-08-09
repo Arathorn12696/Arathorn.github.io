@@ -1,0 +1,121 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, 
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* background: #a0a0a0; */
+    background: rgb(36, 34, 34);
+    position:relative;
+    z-index: 1;
+    cursor: url(cursor.png), auto;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    z-index: 10;
+}
+
+nav div{
+    display: flex;
+    padding: 0.5em;
+    gap: 10em;
+}
+
+nav div a {
+    text-decoration: none;
+    /* color: #000; */
+    color: silver;
+    font-family: "Neue Montreal";
+    font-size: 20px;
+}
+
+.container{
+    position: relative;
+    z-index: 20;
+}
+.header {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    padding: 2em;
+    margin: auto;
+    position: relative;
+    z-index: 20;
+}
+
+.header .h1{
+    position: relative;
+    font-family: "Carpenter";
+    font-size: 10vw;
+    /* color: #1a1a1a; */
+    color: silver;
+    line-height: 1.125;
+    z-index: 20;
+}
+
+
+.ground {
+    position: relative;
+    width: calc(100vw - 4em);
+    height: 100%;
+    margin: 0 auto;
+    border-radius:10px;
+    border:4px solid #1a1a1a;
+}
+
+img {
+    width: 100%; /* Ensures the image width covers the full screen width */
+    height: auto; /* Maintains aspect ratio */
+    max-height: 20vh; /* Adjust this value to control the image height */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+.overlay {
+    position: fixed;
+    width:100vw;
+    height: 100vh;
+    z-index:300;
+    display: flex;
+}
+
+.bar{
+    width: 10vw;
+    height: 105vh;
+    background: #1a1a1a;
+
+}
+
+.counter{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    z-index:10000;
+    color:#bcbcc4;
+    padding: 0.2em 0.4em;
+    font-size: 20vw;
+    font-family: "Carpenter";
+}
+
+#container3D {
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    position: fixed; /* Ensure it stays in the same position on the screen */
+    top: 0; /* Aligns it to the top of the viewport */
+    left: 0; /* Aligns it to the left of the viewport */
+    overflow: hidden; /* Hide any overflow */
+    z-index: 200; /* Ensure it stays above other content */
+}
