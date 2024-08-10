@@ -18,7 +18,7 @@ img {
 
 h1 {
     text-transform: uppercase;
-    font-size: 200px;
+    font-size: 150px;
     font-weight:400;
     letter-spacing: -4px;
 }
@@ -26,13 +26,13 @@ h1 {
 section.hero {
     width: 100vw;
     height: 100vh;
-    background: url(images/img7.png) no-repeat 50% 50%;
+    background: url(images/cover.jpeg) no-repeat 50% 50%;
     background-size:cover;
     display:flex;
     justify-content: center;
     align-items: center;
-
 }
+
 @font-face {
     font-family: 'PP Editorial Old';
     src: url('ppeditorialold-regular.otf') format('opentype');
@@ -43,7 +43,7 @@ section.hero {
 .hero h1{
     font-family: "PP Editorial Old";
     font-weight: lighter;
-    color: #fff;
+    color: white;
 }
 
 section.info {
@@ -85,13 +85,15 @@ section.info {
 .header-info p{
     padding: 1em;
     font-family: "PP Editorial Old";
-    font-size: 52px;
+    font-size: 45px;
     font-weight: lighter;
 }
 
 .header-images {
-    width: 100%;
-    height: 250px;
+    position: absolute;
+    width: 100em;
+    height: 25em;
+    top: 20em;
     padding: 1em;
     display: flex;
     gap: 1em;
@@ -151,9 +153,13 @@ section.whitespace {
 section.website-content {
     position: relative;
     width: 100%;
-    height: 150vh;
+    height: 100vh;
     background-color: white;
     z-index: 10;
+    overflow: hidden; /* Hide overflow content */
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+    text-align: center;      /* Center text */
 }
 
 .website-content h1{
@@ -161,22 +167,154 @@ section.website-content {
     letter-spacing: 0;
 }
 
-html.lenis, html.lenis body {
+.chaliceGone {
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    max-width: 100%;
     height: auto;
-  }
-  
-  .lenis.lenis-smooth {
-    scroll-behavior: auto !important;
-  }
-  
-  .lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
-  }
-  
-  .lenis.lenis-stopped {
-    overflow: hidden;
-  }
-  
-  .lenis.lenis-smooth iframe {
-    pointer-events: none;
-  }
+    z-index: 11; /* Ensure this is higher than other elements */
+    z-index:13;
+}
+
+.continue-button {
+    right:50%;
+    left:50%;
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    color: white;
+    background-color: #007BFF; /* Blue background */
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    
+}
+
+.continue-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+.continue-button:active {
+    background-color: #004080; /* Even darker blue when clicked */
+    transform: scale(0.95); /* Slightly shrink button on click */
+}
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+    img {
+        max-width: 50%; /* Ensure images do not exceed the container's width */
+        height: auto; /* Maintain aspect ratio */
+        object-fit: contain; /* Ensure the whole image is visible */
+    }
+
+    .hero img, .header-images img {
+        max-width: 100%; /* Ensure images do not exceed container width */
+        max-height: 50vh; /* Limit height to 50% of viewport height */
+        width: auto; /* Allow width to adjust automatically */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .header-images {
+        position: absolute;
+        width: 100em;
+        height: 25em;
+        top: 20em;
+        padding: 1em;
+        display: flex;
+        gap: 1em;
+        object-fit: cover;
+    }
+
+    .header-images .img {
+        width: 75px; /* Full width for images */
+        height: 75px; /* Maintain aspect ratio */
+    }
+
+    .header-row h1 {
+        font-size: 36px; /* Smaller font size for mobile */
+        line-height: 1.2; /* Adjust line height for better readability */
+    }
+
+    .header-info p {
+        font-size: 18px; /* Adjust font size for mobile */
+        padding: 0.5em; /* Adjust padding for better readability */
+    }
+
+    .revealer {
+        width: 80px; /* Smaller width for mobile */
+        height: 80px; /* Smaller height for mobile */
+        margin-top: 200px; /* Adjust margin for better positioning */
+    }
+
+    .continue-button {
+        padding: 8px 16px; /* Adjust padding for mobile */
+        font-size: 16px; /* Adjust font size for mobile */
+        border-radius: 6px; /* Slightly smaller border radius */
+    }
+}
+
+/* For very small screens like phones in portrait mode */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 50px; /* Even smaller font size for very small screens */
+    }
+
+    .hero h1 {
+        font-size: 40px; /* Adjust hero heading for very small screens */
+    }
+
+    .header-info p {
+        font-size: 24px; /* Further reduce font size for paragraphs */
+    }
+
+    .website-content h1 {
+        font-size: 30px; /* Further reduce font size for section heading */
+    }
+
+    .chaliceGone {
+        width: 90%; /* Increase width for very small screens */
+    }
+
+    .continue-button {
+        font-size: 14px; /* Smaller font size for very small screens */
+        padding: 8px 16px; /* Adjust padding */
+    }
+
+    .revealer {
+        width: 60px; /* Smaller size for very small screens */
+        height: 60px;
+    }
+}
+
+
+
+/* Lenis */
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}

@@ -139,3 +139,10 @@ loader.load(
 
 // Set the camera position further back
 camera.position.z = 50;
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('click', () => {
+    
+      window.location.href = './intro'; // Replace with your target page URL
+  });
+});

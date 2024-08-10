@@ -1,0 +1,120 @@
+body {
+    background-color: black;
+}
+
+.gate-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    z-index: 11;
+}
+
+.gate {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.left-gate {
+    left: 0;
+    background-image: url('images/leftgate.png'); /* Replace with your image path */
+}
+
+.right-gate {
+    right: 0;
+    background-image: url('images/rightgate.png'); /* Replace with your image path */
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 20px;
+    height: 140vh; /* Example height to make scrolling necessary */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.chaliceGone {
+    width:500px;
+    height:500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 330px;
+    border: 5px solid #555
+}
+
+@font-face {
+    font-family: 'PP Editorial Old';
+    src: url('ppeditorialold-regular.otf') format('opentype');
+    font-weight: lighter; /* Adjust if needed */
+    font-style: normal;  /* Adjust if needed */
+}
+
+h1 {
+    font-family: "PP Editorial Old";
+    font-weight: lighter;
+    color: white;
+}
+
+#buttons-container {
+    text-align: center;
+    z-index: 12;
+    position: relative;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#arrow {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#arrow img {
+    width: 50px; 
+    height: auto; 
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Lenis */
+
+html.lenis, html.lenis body {
+    height: auto;
+  }
+  
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  
+  .lenis.lenis-smooth iframe {
+    pointer-events: none;
+  }
