@@ -211,13 +211,13 @@ section.website-content {
 /* Media Queries */
 @media (max-width: 768px) {
     img {
-        max-width: 50%; /* Ensure images do not exceed the container's width */
+        width: 100%; /* Ensure images fit within the container width */
         height: auto; /* Maintain aspect ratio */
-        object-fit: contain; /* Ensure the whole image is visible */
+        object-fit: cover; /* Cover the container while maintaining aspect ratio */
     }
 
     .hero img, .header-images img {
-        max-width: 100%; /* Ensure images do not exceed container width */
+        max-width: 100%; /* Ensure images fit within container width */
         max-height: 50vh; /* Limit height to 50% of viewport height */
         width: auto; /* Allow width to adjust automatically */
         height: auto; /* Maintain aspect ratio */
@@ -225,18 +225,18 @@ section.website-content {
 
     .header-images {
         position: absolute;
-        width: 100em;
-        height: 25em;
+        width: 100%;
+        height: auto; /* Adjust height to fit content */
         top: 20em;
         padding: 1em;
         display: flex;
+        flex-wrap: wrap; /* Allow wrapping for better mobile layout */
         gap: 1em;
-        object-fit: cover;
     }
 
     .header-images .img {
-        width: 75px; /* Full width for images */
-        height: 75px; /* Maintain aspect ratio */
+        width: 75px; /* Adjust width for mobile */
+        height: auto; /* Maintain aspect ratio */
     }
 
     .header-row h1 {
@@ -250,9 +250,11 @@ section.website-content {
     }
 
     .revealer {
-        width: 80px; /* Smaller width for mobile */
-        height: 80px; /* Smaller height for mobile */
+        width: 80px; /* Adjust size for mobile */
+        height: 80px;
         margin-top: 200px; /* Adjust margin for better positioning */
+        left: 50%; /* Center horizontally */
+        transform: translate(-50%, 0%); /* Center horizontally */
     }
 
     .continue-button {
@@ -265,7 +267,7 @@ section.website-content {
 /* For very small screens like phones in portrait mode */
 @media (max-width: 480px) {
     h1 {
-        font-size: 50px; /* Even smaller font size for very small screens */
+        font-size: 50px; /* Smaller font size for very small screens */
     }
 
     .hero h1 {

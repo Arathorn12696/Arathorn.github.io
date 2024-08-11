@@ -97,6 +97,7 @@ button {
     display: none !important;
 }
 
+
 /* Lenis */
 
 html.lenis, html.lenis body {
@@ -118,3 +119,48 @@ html.lenis, html.lenis body {
   .lenis.lenis-smooth iframe {
     pointer-events: none;
   }
+
+  /* Mobile */
+
+  @media only screen and (max-width: 767px) {
+    .gate {
+        width: 50%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        transition: transform 1s ease-in-out; /* Ensure both gates have the same animation */
+    }
+
+    .left-gate {
+        left: 0;
+        transform: translateX(0); /* Start in place */
+    }
+
+    .right-gate {
+        right: 0;
+        transform: translateX(0); /* Start in place */
+    }
+
+    /* Add active class for gates to move them outwards */
+    .gate-container .left-gate.active {
+        transform: translateX(-100%);
+    }
+
+    .gate-container .right-gate.active {
+        transform: translateX(100%);
+    }
+
+    .chaliceGone {
+        width: 80%; /* Adjust for mobile view */
+        height: auto;
+        margin-top: 90vh; /* Adjust for positioning on mobile */
+    }
+
+    h1 {
+        font-size: 5vw; /* Adjust font size for mobile */
+    }
+
+    #buttons-container {
+        margin-top: 10vh; /* Adjust button positioning on mobile */
+    }
+}
